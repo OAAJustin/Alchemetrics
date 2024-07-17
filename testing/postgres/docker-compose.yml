@@ -1,0 +1,12 @@
+version: 'latest'
+
+services:
+
+  db:
+    image: 'postgres'
+    environment: 
+      POSTGRES_DB: 'distribution_db_postgres'
+      POSTGRES_PASSWORD: 'Password!'
+      POSTGRES_USER: 'SkillzWorld'
+    ports:            
+      - '5432:5432'
