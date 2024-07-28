@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react';
-import OverlayForm from './OverlayForm';
+import AddItemOverlayForm from './AddItemOverlayForm';
 import Table from './DataTable';
 
 
@@ -33,7 +33,7 @@ export default function Home() {
             >
               Add New Item
             </button>
-            <OverlayForm show={showForm} onClose={toggleForm} />
+            <AddItemOverlayForm show={showForm} onClose={toggleForm} />
           </div>
         </div>
     </div>

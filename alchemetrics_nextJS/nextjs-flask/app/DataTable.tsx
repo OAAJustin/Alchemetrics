@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import OverlayForm from './OverlayForm';
+import ModifyItemOverlayForm from './ModifyItemOverlayForm';
 
 
 interface TableData {
@@ -37,6 +37,7 @@ interface TableData {
   
     const handleRowClick = (rowData: TableData) => {
       setSelectedRowData(rowData);
+      setShowForm(!showForm);
     };
 
     const toggleForm = () => {
@@ -58,28 +59,24 @@ interface TableData {
       </tr>
     </thead>
     <tbody>
-    {data.map((row) => (
-            <tr key={row.uid} onClick={toggleForm} style={rowStyle}>
-              <td>1</td>
-              <td>Agnes Wnuk</td>
-              <td>Afternoon Ted</td>
-              <td>Watercolor</td>
-              <td>None</td>
-              <td>1.0</td>
-              <td>200.0</td>
-            </tr>
-          ))}
-    {data.map((row) => (
-            <tr key={row.uid} onClick={toggleForm} style={rowStyle}>
-              <td>2</td>
-              <td>Agnes Wnuk</td>
-              <td>Lobster Dinner</td>
-              <td>Watercolor</td>
-              <td>None</td>
-              <td>1.0</td>
-              <td>200.0</td>
-            </tr>
-          ))}
+      <tr key={1} onClick={toggleForm} style={rowStyle}>
+        <td>1</td>
+        <td>Agnes Wnuk</td>
+        <td>Afternoon Ted</td>
+        <td>Watercolor</td>
+        <td>None</td>
+        <td>1.0</td>
+        <td>200.0</td>
+      </tr>
+      <tr key={2} onClick={toggleForm} style={rowStyle}>
+        <td>2</td>
+        <td>Agnes Wnuk</td>
+        <td>Lobster Dinner</td>
+        <td>Watercolor</td>
+        <td>None</td>
+        <td>1.0</td>
+        <td>200.0</td>
+      </tr>
       <tr>
         <td>3</td>
         <td>Agnes Wnuk</td>
@@ -2215,7 +2212,16 @@ interface TableData {
       </tr>
     </tbody>
         </table>
-        <OverlayForm show={showForm} onClose={toggleForm} />
+        <ModifyItemOverlayForm 
+        show={showForm}
+        onClose={toggleForm}
+        uid={selectedRowData?.uid}
+        artist={selectedRowData?.artist}
+        title={selectedRowData?.title}
+        medium={selectedRowData?.medium}
+        size={selectedRowData?.size}
+        qty={selectedRowData?.qty}
+        price={selectedRowData?.price}/>
         {selectedRowData && (
           <div>
             <h3>Selected Row Data:</h3>

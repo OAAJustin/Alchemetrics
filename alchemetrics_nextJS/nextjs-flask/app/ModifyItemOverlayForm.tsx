@@ -1,12 +1,19 @@
 // src/OverlayForm.tsx
 import React from 'react';
 
-interface OverlayFormProps {
+interface ModifyItemOverlayFormProps {
   show: boolean;
   onClose: () => void;
+  uid: number | undefined;
+  artist: string | undefined;
+  title: string | undefined;
+  medium: string | undefined;
+  size: number | undefined;
+  qty: number | undefined;
+  price: number | undefined;
 }
 
-const OverlayForm: React.FC<OverlayFormProps> = ({ show, onClose }) => {
+const ModifyItemOverlayForm: React.FC<ModifyItemOverlayFormProps> = ({ show, onClose, uid, artist, title, medium, size, qty, price }) => {
   if (!show) return null;
 
   return (
@@ -18,7 +25,7 @@ const OverlayForm: React.FC<OverlayFormProps> = ({ show, onClose }) => {
         >
           &times;
         </button>
-        <h2 className="text-2xl mb-4 text-gray-700">Add New Item</h2>
+        <h2 className="text-2xl mb-4 text-gray-700">Modify Item</h2>
         <form>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="artist">
@@ -29,6 +36,7 @@ const OverlayForm: React.FC<OverlayFormProps> = ({ show, onClose }) => {
               id="artist"
               type="text"
               placeholder="Artist"
+              value={artist}
             />
           </div>
 
@@ -107,4 +115,4 @@ const OverlayForm: React.FC<OverlayFormProps> = ({ show, onClose }) => {
   );
 };
 
-export default OverlayForm;
+export default ModifyItemOverlayForm;
