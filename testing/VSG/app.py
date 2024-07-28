@@ -9,7 +9,7 @@ app = Flask(__name__)
 with open('config.json', 'r') as config_file:
     config = json.load(config_file)
 
-engine = create_engine(f"mysql+mysqlconnector://{config['User']}:{config['password']}@{config['host']}/{config['database']}")
+engine = create_engine(f"mysql+mysqlconnector://{config['user']}:{config['password']}@{config['host']}/{config['database']}")
 
 @app.route('/add-item', methods=['POST'])
 def add_item():
@@ -44,7 +44,7 @@ def add_item():
             """)
             connection.execute(query, title=title, medium=medium, size=size, qty=qty, price=price, artist=artist)
         
-        return jsonify({'status': 'success', 'message': 'Item added and datase connected!'}), 200
+        return jsonify({'status': 'success', 'message': 'Item added and datbase connected!'}), 200
 
 
     except Error as e:
