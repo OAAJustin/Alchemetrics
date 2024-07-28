@@ -37,6 +37,7 @@ def add_item():
             """
             
             cursor.execute(query, (title, medium, size, qty, price, artist))
+            connection.commit()
         
         return jsonify({'status': 'success', 'message': 'Item added and datbase connected!'}), 200
 
@@ -52,4 +53,4 @@ def add_item():
             print("MySQL connection is closed")
       
 if __name__ == '__main__':
-    app.run(debug = True, port = 3000)
+    app.run(debug = True)

@@ -1,0 +1,1 @@
+CREATE TABLE Inventory (UID INT PRIMARY KEY, Title TEXT, Medium TEXT, Size INT, Qty INT, Price FLOAT, Artist TEXT);
