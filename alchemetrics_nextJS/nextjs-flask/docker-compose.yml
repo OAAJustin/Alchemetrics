@@ -4,10 +4,10 @@ services:
     image: 'mysql/mysql-server:8.0'
     environment:
       MYSQL_ROOT_PASSWORD: 'admin'
-      MYSQL_DATABASE: 'vicinanza-studios'
       MYSQL_USER: 'administrator'
       MYSQL_PASSWORD: 'admin'
+      MYSQL_DATABASE: 'vicinanza-studios'
     ports:
      - '3306:3306'
     volumes:
-     - ./var/lib/mysql
+     - /Users/Justin/dev/SaaS/Alchemetrics/Alchemetrics/alchemetrics_nextJS/nextjs-flask/var/lib/mysql

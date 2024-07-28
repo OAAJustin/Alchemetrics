@@ -1,6 +1,6 @@
 {
-    "user": "Justin",
-    "password": "Password!",
+    "user": "administrator",
+    "password": "admin",
     "host": "localhost",
-    "database": "Vicinanza Studios & Gallery"
+    "database": "vicinanza-studios"
 }
