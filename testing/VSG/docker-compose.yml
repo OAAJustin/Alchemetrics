@@ -12,5 +12,5 @@ services:
     ports:            
       - '3306:3306'
     volumes:
-      - '/Users/Justin/dev/SaaS/Alchemetrics/testing/VSG:/usr/src/mysql'
+      - './var/lib/mysql'
 
