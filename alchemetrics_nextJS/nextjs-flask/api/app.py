@@ -1,13 +1,15 @@
-from flask import Flask, render_template, request, jsonify
-from mysql.connector import Error, cursor, connect
-import json
+from flask import Flask, request, jsonify
+from sqlalchemy import create_engine
+import pandas as pd
 
 app = Flask(__name__)
 
-with open('config.json', 'r') as config_file:
-    config = json.load(config_file)
+# Create the SQLAlchemy engine using mysql+mysqlconnector or mysql+pymysql
+engine = create_engine("mysql+mysqlconnector://administrator:admin@localhost/vicinanza-studios")
+# engine = create_engine("mysql+pymysql://administrator:admin@localhost/vicinanza-studios")
 
 @app.route('/add-item', methods=['POST'])
+@app.route('/api/data')
 def add_item():
     data = request.json
     title = data['Title']
@@ -17,40 +19,20 @@ def add_item():
     price = data['Price']
     artist = data['Artist']
 
-    try:
-        # Establish the connection
-        connection = connect(
-            host=config['host'],
-            user=config['user'],
-            password=config['password'],
-            database=config['database'],
-        )
+    # Create a DataFrame for the new row
+    df = pd.DataFrame({
+        'Title': [title],
+        'Medium': [medium],
+        'Size': [size],
+        'Qty': [qty],
+        'Price': [price],
+        'Artist': [artist]
+    })
 
-        if connection.is_connected():
-            print('Connected to the database')
+    # Export the DataFrame to the SQL table
+    df.to_sql('Inventory', con=engine, if_exists='append', index=False)
+    
+    return jsonify({'status': 'success', 'message': 'Item added successfully!'}), 200
 
-            # Insert data into the MySQL table
-            cursor = connection.cursor()
-            query = """
-                INSERT INTO Inventory (Title, Medium, Size, Qty, Price, Artist)
-                VALUES (%s, %s, %s, %s, %s, %s)
-            """
-            
-            cursor.execute(query, (title, medium, size, qty, price, artist))
-            connection.commit()
-        
-        return jsonify({'status': 'success', 'message': 'Item added and datbase connected!'}), 200
-
-
-    except Error as e:
-        print("Error while connecting to MySQL", e)
-        return jsonify({'status': 'error', 'message': str(e)}), 500
-        
-    finally:
-        if (connection.is_connected()):
-            cursor.close()
-            connection.close()
-            print("MySQL connection is closed")
-      
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug=True)
