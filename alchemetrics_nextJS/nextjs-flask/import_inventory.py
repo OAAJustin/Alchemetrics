@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy import text
 
 # Folder path of CSV files
-folder_path = '/Users/Justin/dev/SaaS/Alchemetrics/Alchemetrics/VSG/vsg-db/Inventory'
+folder_path = 'D:/Source/iamty/Documents/Dev/Alchemetrics/VSG/vsg-db/Inventory'
 
 def extract_artist_name(file_name):
     # Split the filename to get the part after the hyphen and before the .csv
@@ -26,7 +26,7 @@ for file_name in os.listdir(folder_path):
         df['Artist'] = artist_name
         
         # Table name
-        table_name = 'Inventory'
+        table_name = 'inventory'
         
         # Create the MySQL Engine
         engine = create_engine('mysql+mysqlconnector://administrator:admin@localhost/vicinanza-studios')

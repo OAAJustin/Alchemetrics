@@ -13,26 +13,26 @@ engine = create_engine("mysql+mysqlconnector://administrator:admin@localhost/vic
 @app.route('/add-item', methods=['POST'])
 @app.route('/api/data')
 def add_item():
-    title = 'Example Title',
-    medium = 'Oil on Canvas',
-    size = '24',
-    qty = 1,
-    price = 200,
     artist = 'John Doe'
-
+    title = 'Example Title'
+    medium = 'Oil on Canvas'
+    size = 24
+    qty = 1
+    price = 200.0
 
     # Create a DataFrame for the new row
     df = pd.DataFrame({
-        'Title': [title],
-        'Medium': [medium],
-        'Size': [size],
-        'Qty': [qty],
-        'Price': [price],
-        'Artist': [artist]
+        'artist': [artist],
+        'title': [title],
+        'medium': [medium],
+        'size': [size],
+        'qty': [qty],
+        'price': [price],
     })
 
     # Export the DataFrame to the SQL table
-    df.to_sql('Inventory', con=engine, if_exists='append', index=False)
+    print("Dataframe created!")
+    df.to_sql('inventory', con=engine, if_exists='append', index=False)
     
     return jsonify({'status': 'success', 'message': 'Item added successfully!'}), 200
 

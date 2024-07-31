@@ -17,7 +17,6 @@ const AddItemOverlayForm: React.FC<AddItemOverlayFormProps> = ({ show, onClose})
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ key: 'value' }),
     })
     const data = await res.json()
     setResponse(data.message)
