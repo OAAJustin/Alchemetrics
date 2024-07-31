@@ -1,5 +1,6 @@
 // src/OverlayForm.tsx
 import React from 'react';
+import { useState } from 'react';
 
 interface AddItemOverlayFormProps {
   show: boolean;
@@ -8,6 +9,19 @@ interface AddItemOverlayFormProps {
 
 const AddItemOverlayForm: React.FC<AddItemOverlayFormProps> = ({ show, onClose}) => {
   if (!show) return null;
+  const [response, setResponse] = useState<string | null>(null)
+
+  const handleClick = async () => {
+    const res = await fetch('http://localhost:8080/add-item', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ key: 'value' }),
+    })
+    const data = await res.json()
+    setResponse(data.message)
+}
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
@@ -96,6 +110,7 @@ const AddItemOverlayForm: React.FC<AddItemOverlayFormProps> = ({ show, onClose})
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
+              onClick={handleClick}
             >
               Submit
             </button>
