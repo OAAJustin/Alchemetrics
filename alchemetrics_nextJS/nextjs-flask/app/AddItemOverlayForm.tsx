@@ -10,16 +10,32 @@ interface AddItemOverlayFormProps {
 const AddItemOverlayForm: React.FC<AddItemOverlayFormProps> = ({ show, onClose}) => {
   if (!show) return null;
   const [response, setResponse] = useState<string | null>(null)
+  const [artist, setArtist] = useState<string>('');
+  const [title, setTitle] = useState<string>('');
+  const [medium, setMedium] = useState<string>('');
+  const [size, setSize] = useState<number>(0);
+  const [qty, setQty] = useState<number>(0);
+  const [price, setPrice] = useState<number>(0);
 
   const handleClick = async () => {
+    const data = { 
+      Artist: artist,
+      Title: title,
+      Medium: medium,
+      Size: size,
+      Qty: qty,
+      Price: price
+    };
+
     const res = await fetch('http://localhost:8080/add-item', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
+        body: JSON.stringify(data),
     })
-    const data = await res.json()
-    setResponse(data.message)
+    const flaskData = await res.json()
+    setResponse(flaskData.message)
 }
 
   return (
@@ -42,6 +58,7 @@ const AddItemOverlayForm: React.FC<AddItemOverlayFormProps> = ({ show, onClose})
               id="artist"
               type="text"
               placeholder="Artist"
+              onChange={(e) => setArtist(e.target.value)}
             />
           </div>
 
@@ -54,6 +71,7 @@ const AddItemOverlayForm: React.FC<AddItemOverlayFormProps> = ({ show, onClose})
               id="title"
               type="text"
               placeholder="Title"
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
 
@@ -66,6 +84,7 @@ const AddItemOverlayForm: React.FC<AddItemOverlayFormProps> = ({ show, onClose})
               id="medium"
               type="text"
               placeholder="Medium"
+              onChange={(e) => setMedium(e.target.value)}
             />
           </div>
 
@@ -78,6 +97,8 @@ const AddItemOverlayForm: React.FC<AddItemOverlayFormProps> = ({ show, onClose})
               id="size"
               type="number"
               placeholder="Size"
+              value={0}
+              onChange={(e) => setSize(e.target.valueAsNumber)}
             />
           </div>
 
@@ -90,6 +111,7 @@ const AddItemOverlayForm: React.FC<AddItemOverlayFormProps> = ({ show, onClose})
               id="qty"
               type="number"
               placeholder="Quantity"
+              onChange={(e) => setSize(e.target.valueAsNumber)}
             />
           </div>
 
@@ -102,6 +124,7 @@ const AddItemOverlayForm: React.FC<AddItemOverlayFormProps> = ({ show, onClose})
               id="price"
               type="number"
               placeholder="Price"
+              onChange={(e) => setSize(e.target.valueAsNumber)}
             />
           </div>
 
