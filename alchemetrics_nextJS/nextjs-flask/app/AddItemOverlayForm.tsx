@@ -36,6 +36,7 @@ const AddItemOverlayForm: React.FC<AddItemOverlayFormProps> = ({ show, onClose})
     })
     const flaskData = await res.json()
     setResponse(flaskData.message)
+    onClose()
 }
 
   return (
