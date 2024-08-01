@@ -98,7 +98,6 @@ const AddItemOverlayForm: React.FC<AddItemOverlayFormProps> = ({ show, onClose})
               id="size"
               type="number"
               placeholder="Size"
-              value={0}
               onChange={(e) => setSize(e.target.valueAsNumber)}
             />
           </div>
