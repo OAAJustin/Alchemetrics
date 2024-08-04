@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-    "sqltools.connections": []
-=======
     "sqltools.connections": [
         {
             "mysqlOptions": {
@@ -12,11 +9,10 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "distribution_db",
-            "username": "tarroyo",
-            "database": "distribution_db",
+            "name": "MySQL 8.0.32-1.2.11-server",
+            "database": "vicinanza-studios",
+            "username": "administrator",
             "askForPassword": true
         }
     ]
->>>>>>> 2c44fff1c61e75d976abd9882b766a20c535a9f9
 }
