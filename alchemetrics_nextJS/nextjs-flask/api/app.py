@@ -45,6 +45,19 @@ def add_item(): # Add item function definition
     return jsonify({'status': 'success', 'message': 'Item added successfully!'}), 200
 #endregion Define the add_item function that routes to /add-item
 
+@app.route('/get-data', methods=['GET'])
+def get_data():
+    # Define the query to fetch the data
+    query = "SELECT uid, artist, title, medium, size, qty, price FROM Inventory"
+    
+    # Fetch the data into a DataFrame
+    df = pd.read_sql(query, engine)
+    
+    # Convert the DataFrame to JSON
+    data_json = df.to_json(orient='records')
+    
+    return jsonify(data_json)
+
 #region When the python program has been called in the command line, it will run whatever is under the :
 if __name__ == '__main__':
     app.run(debug=True, port = 8080)

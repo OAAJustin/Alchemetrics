@@ -1,7 +1,9 @@
 'use client'
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import AddItemOverlayForm from './AddItemOverlayForm';
 import Table from './DataTable';
+import Header from './Header';
+import { AppProps } from 'next/app';
 
 
 
@@ -14,8 +16,8 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>
-        <h1>MySQL Data Table</h1>
+      <Header />
+      <div style={{marginTop: '50px'}}>
         <Table />
         
         <div id="modifications_container">
