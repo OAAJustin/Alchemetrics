@@ -38,3 +38,4 @@ package.json
 package-lock.json
 next.config.js
 docker-compose.yml
+import_inventory.py
