@@ -10,4 +10,4 @@ services:
     ports:
      - '3306:3306'
     volumes:
-     - /D:/Source/iamty/Documents/Dev/Alchemetrics/alchemetrics_nextJS/nextjs-flask/var/lib/mysql
+     - /Users/Justin/dev/SaaS/Alchemetrics/Alchemetrics/alchemetrics_nextJS/nextjs-flask/var/lib/mysql
