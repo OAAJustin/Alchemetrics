@@ -1,4 +1,7 @@
 {
+<<<<<<< HEAD
+    "sqltools.connections": []
+=======
     "sqltools.connections": [
         {
             "mysqlOptions": {
@@ -15,4 +18,5 @@
             "askForPassword": true
         }
     ]
+>>>>>>> 2c44fff1c61e75d976abd9882b766a20c535a9f9
 }
