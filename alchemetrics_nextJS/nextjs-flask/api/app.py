@@ -45,19 +45,6 @@ def add_item(): # Add item function definition
     return jsonify({'status': 'success', 'message': 'Item added successfully!'}), 200
 #endregion Define the add_item function that routes to /add-item
 
-#region Define the refresh_inventory function that routes to /refresh-inventory 
-@app.route('/refresh-inventory', methods=['GET']) # Initialize the /refresh-inventory method as a GET
-def refresh_inventory(): # Refresh inventory function definition
-    # Query the Inventory table
-    query = "SELECT * FROM Inventory"
-    inventory_df = pd.read_sql(query, con=engine)
-
-    # Convert the DataFrame to JSON
-    inventory_json = inventory_df.to_json(orient='records')
-
-    return jsonify({'status': 'success', 'data': inventory_json}), 200
-#endregion Define the refresh_inventory function that routes to /refresh-inventory
-
 @app.route('/get-data', methods=['GET'])
 def get_data():
     # Define the query to fetch the data
