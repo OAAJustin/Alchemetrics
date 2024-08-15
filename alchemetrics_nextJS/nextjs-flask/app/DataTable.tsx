@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ModifyItemOverlayForm from './ModifyItemOverlayForm';
 import { json } from 'stream/consumers';
+import DataTableCSS from './DataTable.module.css';
 
 
 interface TableData {
@@ -24,7 +25,7 @@ interface TableData {
   }
 
   const rowStyle: React.CSSProperties = {
-    cursor: 'pointer'
+    cursor: 'pointer',
   };
 
   const Table: React.FC = () => {
@@ -58,7 +59,7 @@ interface TableData {
   
     return (
       <div>
-        <table>
+        <table className={DataTableCSS.table}>
     <thead>
       <tr>
         <th>UID</th>
