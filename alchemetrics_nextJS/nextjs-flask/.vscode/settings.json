@@ -14,5 +14,6 @@
             "username": "administrator",
             "askForPassword": true
         }
-    ]
+    ],
+    "python.REPL.enableREPLSmartSend": false
 }

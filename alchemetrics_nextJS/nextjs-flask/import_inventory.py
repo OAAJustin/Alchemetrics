@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy import text
 
 # Folder path of CSV files
-folder_path = 'D:/Source/iamty/Documents/Dev/vicinanza_studios/vicinanza_studios_inventory'
+folder_path = '/Users/Justin/dev/SaaS/Alchemetrics/Alchemetrics/VSG/vsg-db/Inventory'
 
 def extract_artist_name(file_name):
     # Split the filename to get the part after the hyphen and before the .csv

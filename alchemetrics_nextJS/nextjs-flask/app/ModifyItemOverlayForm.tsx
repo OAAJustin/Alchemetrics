@@ -35,7 +35,7 @@ const ModifyItemOverlayForm: React.FC<ModifyItemOverlayFormProps> = ({ show, onC
         body: JSON.stringify(data),
     })
     const flaskData = await res.json()
-    //setResponse(flaskData.message)
+    // setResponse(flaskData.message)
     onClose()
   }
 
@@ -48,7 +48,7 @@ const ModifyItemOverlayForm: React.FC<ModifyItemOverlayFormProps> = ({ show, onC
         body: JSON.stringify(data),
     })
     const flaskData = await res.json()
-    //setResponse(flaskData.message)
+    // setResponse(flaskData.message)
     onClose()
   }
 
