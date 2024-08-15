@@ -72,7 +72,7 @@ interface TableData {
     </thead>
     <tbody>
       {data.map(item => (
-            <tr key={item.uid} onClick={toggleForm} style={rowStyle}>
+            <tr key={item.uid} onClick={() => handleRowClick(item)} style={rowStyle}>
             <td>{item.uid}</td>
             <td>{item.artist}</td>
             <td>{item.title}</td>
@@ -94,14 +94,6 @@ interface TableData {
         size={selectedRowData?.size}
         qty={selectedRowData?.qty}
         price={selectedRowData?.price}/>
-        {selectedRowData && (
-          <div>
-            <h3>Selected Row Data:</h3>
-            <p>UID: {selectedRowData.uid}</p>
-            <p>Artist: {selectedRowData.artist}</p>
-            <p>Title: {selectedRowData.title}</p>
-          </div>
-        )}
       </div>
     );
     
