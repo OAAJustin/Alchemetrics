@@ -27,21 +27,21 @@ interface TableData {
     cursor: 'pointer',
   };
 
-  const Table: React.FC = () => {
+  const ArchiveTable: React.FC = () => {
     const [selectedRowData, setSelectedRowData] = useState<SelectedRowData | null>(null);
     const [showForm, setShowForm] = useState(false);
     const [data, setData] = useState<TableData[]>([]);
     const [refresh, setRefresh] = useState(false);
 
-    const updateInventoryData = async () => {
-      const res = await fetch('http://localhost:8080/get-data', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-      })
-      const sqlData = await res.json();
-      setData(JSON.parse(await sqlData));
+    const updateArchiveData = async () => {
+        const res = await fetch('http://localhost:8080/get-archive-data', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        const sqlData = await res.json();
+        setData(JSON.parse(await sqlData));
     }
 
     const handleRowClick = (rowData: TableData) => {
@@ -58,7 +58,7 @@ interface TableData {
     }
 
     useEffect(() => {
-      updateInventoryData();
+      updateArchiveData();
       
     }, [refresh]);
   
@@ -109,4 +109,4 @@ interface TableData {
 
   
   
-  export default Table;
+  export default ArchiveTable;

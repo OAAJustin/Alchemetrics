@@ -11,9 +11,11 @@ interface ModifyItemOverlayFormProps {
   size: number | undefined;
   qty: number | undefined;
   price: number | undefined;
+  refresh: boolean;
+  updateTable: () => void;
 }
 
-const ModifyItemOverlayForm: React.FC<ModifyItemOverlayFormProps> = ({ show, onClose, uid, artist, title, medium, size, qty, price }) => {
+const ModifyItemOverlayForm: React.FC<ModifyItemOverlayFormProps> = ({ show, onClose, uid, artist, title, medium, size, qty, price, refresh, updateTable }) => {
   if (!show) return null;
 
   const data = { 
@@ -50,6 +52,7 @@ const ModifyItemOverlayForm: React.FC<ModifyItemOverlayFormProps> = ({ show, onC
     const flaskData = await res.json()
     // setResponse(flaskData.message)
     onClose()
+    updateTable()
   }
 
   return (

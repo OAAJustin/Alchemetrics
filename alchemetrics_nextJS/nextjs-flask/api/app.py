@@ -57,6 +57,19 @@ def get_data():
     
     return jsonify(data_json)
 
+@app.route('/get-archive-data', methods=['GET'])
+def get_archive_data():
+    # Define the query to fetch the data
+    query = "SELECT uid, artist, title, medium, size, qty, price FROM Archive"
+    
+    # Fetch the data into a DataFrame
+    df = pd.read_sql(query, engine)
+    
+    # Convert the DataFrame to JSON
+    data_json = df.to_json(orient='records')
+    
+    return jsonify(data_json)
+
 @app.route('/delete-item', methods=['POST'])
 def delete_item():
     data = request.json
